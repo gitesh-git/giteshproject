@@ -1,0 +1,99 @@
+
+
+/*
+Author: XpeedStudio
+Author URI: http://themeforest.net/user/XpeedStudio/portfolio
+*/
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    body {
+        font-size: 15px;
+    }
+    
+
+}
+
+/* Portrait tablets and small desktops */
+@media  (max-width: 991px) {
+    html {
+        font-size: 90%;
+    }
+   .portfolio-item {
+    width: 45%;
+	}
+	.heading p {
+    line-height: 30px;
+	}
+	.about-content {
+    text-align: center;
+	}
+
+}
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    html {
+        font-size: 80%;
+    }
+	.home-details .home-title h1 {
+    font-size: 35px;
+	}
+	
+	.about-content {
+    text-align: center;
+	}
+	.portfolio-item {
+    width: 45%;
+	}
+	.contact-details .contact-category .mail h2 {
+    font-size: 40px;
+	}
+	.contact-details .contact-category .phone h5 {
+    font-size: 35px;
+	}
+	.heading p {
+    line-height: 23px;
+    margin-top: 30px;
+	}
+   
+}
+
+
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+    html {
+        font-size: 65%;
+    }
+	.home-details .home-title h1 {
+    font-size:20px;
+	}
+	.scroll-down h5 {
+    font-size: 13px;
+	}
+	
+	.portfolio-item {
+    width: 99%;
+	}
+   .contact-details .contact-category .mail h2 {
+    font-size:25px;
+	}
+	.contact-details .contact-category .phone h5 {
+    font-size: 22px;
+	}
+	.copyright p {
+    font-size: 12px;
+	}
+
+}
+
+
+
+@media (max-width: 320px) {
+
+
+    html {
+        font-size: 60.5%;
+    }
+}
+
