@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git https://github.com/gitesh-git/giteshproject.git
+                checkout scm
             }
         }
     stage('Build') {
