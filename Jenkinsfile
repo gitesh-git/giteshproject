@@ -23,7 +23,7 @@ pipeline {
     stage('Build Docker Image') {
             steps {
                 script {
-                    'sudo docker build -t gitesh8/giteshproject -f https://github.com/gitesh-git/giteshproject.git/Dockerfile'
+                   sh 'docker build -t gitesh8/giteshproject -f https://github.com/gitesh-git/giteshproject.git/Dockerfile'
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
 
                     // Run a new container with the specified image and port mapping
-                    sh "sudo docker run -itd --name giteshproject -p 8080:8080 gitesh8/giteshproject:latest"
+                    sh "docker run -itd --name giteshproject -p 8080:8080 gitesh8/giteshproject:latest"
                 }
             }
         }
