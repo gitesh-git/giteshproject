@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                    sh "docker login -u gitesh8 -p redhat@123"
-                      sh 'docker push gitesh8/giteshproject:version1'
+                      sh "docker push gitesh8/giteshproject:latest"
                     }
                 }
             }
@@ -40,13 +40,13 @@ pipeline {
             steps {
                 script {
                     // Pull the latest Docker image
-                    sh 'docker pull gitesh8/giteshproject:version1'
+                    sh "docker pull gitesh8/giteshproject:latest"
 
                     // Stop and remove the existing container if it exists
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
 
                     // Run a new container with the specified image and port mapping
-                    sh "docker run -itd --name giteshproject -p 8080:8080 gitesh8/giteshproject:version1"
+                    sh "docker run -itd --name giteshproject -p 8080:8080 gitesh8/giteshproject:latest"
                 }
             }
         }
