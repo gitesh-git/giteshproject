@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         DOCKER_IMAGE = 'gitesh8/giteshproject'
-        DOCKERFILE = 'https://github.com/gitesh-git/giteshproject.git'
+        DOCKERFILE = 'https://github.com/gitesh-git/giteshproject.git/Dockerfile'
         CONTAINER_NAME = 'giteshproject'
         PORT_MAPPING = '8080:8080'
     }
