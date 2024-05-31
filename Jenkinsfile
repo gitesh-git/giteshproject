@@ -31,7 +31,7 @@ pipeline {
     stage('Push Docker Image') {
             steps {
                 script {
-                    docker login -u gitesh8 -p redhat@123
+                   sh "docker login -u gitesh8 -p redhat@123"
                         docker.image(DOCKER_IMAGE).push('latest')
                     }
                 }
