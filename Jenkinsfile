@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                    sh "docker login -u gitesh8 -p redhat@123"
-                        docker.image(DOCKER_IMAGE).push('latest')
+                      sh 'docker push ${DOCKER_IMAGE}'
                     }
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     // Pull the latest Docker image
-                    docker.image(DOCKER_IMAGE).pull()
+                    sh 'docker pull ${DOCKER_IMAGE}'
 
                     // Stop and remove the existing container if it exists
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
