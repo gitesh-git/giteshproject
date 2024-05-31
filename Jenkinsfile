@@ -28,19 +28,19 @@ pipeline {
             }
         }
 
-    stage('Push Docker Image') {
-            steps {
-                script {
-                   sh "docker login -u gitesh8 -p redhat@123"
-                      sh "sudo docker push gitesh8/giteshproject:latest"
-                    }
-                }
-            }
-    stage('Deploy Docker Container') {
-            steps {
+//    stage('Push Docker Image') {
+//            steps {
+//                script {
+//                   sh "docker login -u gitesh8 -p redhat@123"
+//                      sh "sudo docker push gitesh8/giteshproject:latest"
+//                    }
+//                }
+//            }
+      stage('Deploy Docker Container') {
+              steps {
                 script {
                     // Pull the latest Docker image
-                    sh "sudo docker pull gitesh8/giteshproject:latest"
+//                    sh "sudo docker pull gitesh8/giteshproject:latest"
 
                     // Stop and remove the existing container if it exists
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
