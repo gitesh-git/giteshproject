@@ -23,7 +23,7 @@ pipeline {
     stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build DOCKER_IMAGE, "-f ${DOCKERFILE} ."
+                    'docker build -t gitesh8/giteshproject -f https://github.com/gitesh-git/giteshproject.git/Dockerfile'
                 }
             }
         }
