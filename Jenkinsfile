@@ -6,7 +6,8 @@ pipeline {
         DOCKERFILE = 'https://github.com/gitesh-git/giteshproject.git'
         CONTAINER_NAME = 'giteshproject'
         PORT_MAPPING = '8080:8080'
-        DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
+       // DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
+        DOCKER_REGISTRY_CREDENTIALS = '02fc35c3-51b7-4a1c-af9c-4bd5dac20bf7'
     }
 
     stages {
