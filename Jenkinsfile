@@ -21,14 +21,13 @@ pipeline {
                 sh 'mvn install'
             }
         }    
-        stage('Build Docker Image') {
+    stage('Build Docker Image') {
             steps {
                 script {
                     docker.build DOCKER_IMAGE, '-f $DOCKERFILE .'
                 }
             }
-        }
-        
+        }    
     stage('Push Docker Image') {
             steps {
                 script {
@@ -38,7 +37,7 @@ pipeline {
                 }
             }
         }
-      stage('Deploy Docker Container') {
+    stage('Deploy Docker Container') {
               steps {
                 script {
                     // Pull the latest Docker image
