@@ -6,6 +6,7 @@ pipeline {
         DOCKERFILE = 'https://github.com/gitesh-git/giteshproject.git/Dockerfile'
         CONTAINER_NAME = 'giteshproject'
         PORT_MAPPING = '8080:8080'
+        DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
     }
 
     stages {
@@ -20,27 +21,28 @@ pipeline {
                 sh 'mvn install'
             }
         }    
-    stage('Build Docker Image') {
+    stages {
+        stage('Build Docker Image') {
             steps {
                 script {
-                   sh 'docker build -t gitesh8/giteshproject -f https://github.com/gitesh-git/giteshproject.git/Dockerfile'
+                    docker.build DOCKER_IMAGE, '-f $DOCKERFILE .'
                 }
             }
         }
-
-//    stage('Push Docker Image') {
-//            steps {
-//                script {
-//                   sh "docker login -u gitesh8 -p redhat@123"
-//                      sh "sudo docker push gitesh8/giteshproject:latest"
-//                    }
-//                }
-//            }
+    stage('Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_REGISTRY_CREDENTIALS) {
+                        docker.image(DOCKER_IMAGE).push('latest')
+                    }
+                }
+            }
+        }
       stage('Deploy Docker Container') {
               steps {
                 script {
                     // Pull the latest Docker image
-//                    sh "sudo docker pull gitesh8/giteshproject:latest"
+                    sh "sudo docker pull gitesh8/giteshproject:latest"
 
                     // Stop and remove the existing container if it exists
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
