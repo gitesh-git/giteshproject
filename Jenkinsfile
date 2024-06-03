@@ -42,13 +42,13 @@ pipeline {
               steps {
                 script {
                     // Pull the latest Docker image
-                    sh "sudo docker pull gitesh8/giteshproject:latest"
+                    docker.image(DOCKER_IMAGE).pull()
 
                     // Stop and remove the existing container if it exists
                    // sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
 
                     // Run a new container with the specified image and port mapping
-                    sh "docker run -itd --name giteshproject -p 8080:8080 gitesh8/giteshproject:latest"
+                    sh "docker run -itd --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
                 }
             }
         }
