@@ -7,7 +7,8 @@ pipeline {
         PORT_MAPPING = '8080:8080'
        // DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
        // DOCKER_REGISTRY_CREDENTIALS = '02fc35c3-51b7-4a1c-af9c-4bd5dac20bf7'
-        DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
+       // DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
+        DOCKER_REGISTRY_CREDENTIALS = '519b27bd-b8cf-44e6-a3f6-ba844104bc41'
     }
     stages {
         stage('Checkout') {
