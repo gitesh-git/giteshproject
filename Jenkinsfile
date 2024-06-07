@@ -29,20 +29,20 @@ pipeline {
                 }
             }
         }    
-    stage('Push Docker Image') {
-            steps {
-                script {
-                    docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
-                        docker.image(DOCKER_IMAGE).push('latest')
-                    }
-                }
-            }
-        }
+  //  stage('Push Docker Image') {
+  //          steps {
+  //              script {
+  //                  docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
+  //                      docker.image(DOCKER_IMAGE).push('latest')
+   //                 }
+  //              }
+  //          }
+  //      }
     stage('Deploy Docker Container') {
               steps {
                 script {
                     // Pull the latest Docker image
-                    docker.image(DOCKER_IMAGE).pull()
+               //     docker.image(DOCKER_IMAGE).pull()
 
                     // Stop and remove the existing container if it exists
                     sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
