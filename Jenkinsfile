@@ -8,7 +8,7 @@ pipeline {
        // DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
        // DOCKER_REGISTRY_CREDENTIALS = '02fc35c3-51b7-4a1c-af9c-4bd5dac20bf7'
        // DOCKER_REGISTRY_CREDENTIALS = 'e5db24e8-34d5-4fef-8b98-bb8b8948c254'
-        DOCKER_REGISTRY_CREDENTIALS = '519b27bd-b8cf-44e6-a3f6-ba844104bc41'
+        DOCKER_REGISTRY_CREDENTIALS = 'dckr_pat_Akm53G-P5cXVKrFv7cQ2Urysf1I'
     }
     stages {
         stage('Checkout') {
@@ -29,23 +29,24 @@ pipeline {
                 }
             }
         }    
-  //  stage('Push Docker Image') {
-  //          steps {
-  //              script {
-  //                  docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
-  //                      docker.image(DOCKER_IMAGE).push('latest')
-   //                 }
-  //              }
-  //          }
-  //      }
+    stage('Push Docker Image') {
+            steps {
+                script {
+                    docker login -u gitesh8
+                    docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
+                        docker.image(DOCKER_IMAGE).push('latest')
+                    }
+                }
+            }
+        }
     stage('Deploy Docker Container') {
               steps {
                 script {
                     // Pull the latest Docker image
-               //     docker.image(DOCKER_IMAGE).pull()
+                    docker.image(DOCKER_IMAGE).pull()
 
                     // Stop and remove the existing container if it exists
-                 //   sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
+                    sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
 
                     // Run a new container with the specified image and port mapping
                     sh "docker run -itd --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
