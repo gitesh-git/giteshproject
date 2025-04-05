@@ -32,7 +32,7 @@ pipeline {
     stage('Push Docker Image') {
             steps {
                 script {
-                    docker login -u gitesh8
+                    sudo docker login -u gitesh8
                     docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
                         docker.image(DOCKER_IMAGE).push('latest')
                     }
@@ -46,10 +46,10 @@ pipeline {
                     docker.image(DOCKER_IMAGE).pull()
 
                     // Stop and remove the existing container if it exists
-                    sh "docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
+                    sh "sudo docker ps -a | grep ${CONTAINER_NAME} && docker stop ${CONTAINER_NAME} && docker rm ${CONTAINER_NAME} || true"
 
                     // Run a new container with the specified image and port mapping
-                    sh "docker run -itd --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
+                    sh "sudo docker run -itd --name ${CONTAINER_NAME} -p ${PORT_MAPPING} ${DOCKER_IMAGE}"
                 }
             }
         }
