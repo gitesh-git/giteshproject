@@ -32,7 +32,7 @@ pipeline {
     stage('Push Docker Image') {
             steps {
                 script {
-                    sudo docker login -u gitesh8
+                    //sudo docker login -u gitesh8
                     docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
                         docker.image(DOCKER_IMAGE).push('latest')
                     }
