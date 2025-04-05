@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     //sudo docker login -u gitesh8
-                    docker.withRegistry('docker.io', DOCKER_REGISTRY_CREDENTIALS) {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_REGISTRY_CREDENTIALS) {
                         docker.image(DOCKER_IMAGE).push('latest')
                     }
                 }
