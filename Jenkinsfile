@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     //sudo docker login -u gitesh8
-                    docker.withRegistry('https://hub.docker.com/repositories/gitesh8', DOCKER_REGISTRY_CREDENTIALS) {
+                    docker.withRegistry('https://hub.docker.com/', DOCKER_REGISTRY_CREDENTIALS) {
                         docker.image(DOCKER_IMAGE).push('latest')
                     }
                 }
