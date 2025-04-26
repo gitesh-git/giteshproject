@@ -5,7 +5,20 @@ pipeline {
         DOCKER_IMAGE = 'gitesh8/giteshproject'
         DOCKER_TAG = 'latest'
     }
-
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+    stage('Build') {
+        steps {
+                // Use Maven to build your project
+                sh 'mvn install'
+            }
+        } 
+        
     stages {
         stage('Pull Code') {
             steps {
