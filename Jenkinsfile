@@ -18,13 +18,6 @@ pipeline {
                 sh 'mvn install'
             }
         } 
-        
-    stages {
-        stage('Pull Code') {
-            steps {
-                git 'https://github.com/gitesh-git/giteshproject.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
